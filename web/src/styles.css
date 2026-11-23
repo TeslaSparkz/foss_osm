@@ -1,0 +1,62 @@
+:root { --ink: #12232e; --sea: #e6eef1; --trace: #d9480f; --edit: #1c5d99; --line: #b9c9d0;
+  font-family: "Iowan Old Style", Georgia, serif; color: var(--ink); }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--sea); }
+h1, h2 { line-height: 1.15; }
+.center { max-width: 34rem; margin: 18vh auto 0; padding: 0 1.5rem; }
+.btn { display: inline-block; background: var(--ink); color: #fff; border: 0; padding: .7rem 1.1rem;
+  border-radius: 4px; font: inherit; cursor: pointer; text-decoration: none; }
+.btn:disabled { opacity: .6; cursor: progress; }
+.btn:focus-visible, button:focus-visible { outline: 3px solid var(--edit); outline-offset: 2px; }
+.link { background: none; border: 0; color: var(--edit); font: inherit; cursor: pointer; text-decoration: underline; }
+.layout { display: grid; grid-template-columns: 22rem 1fr; height: 100vh; }
+aside { padding: 1.25rem; overflow-y: auto; border-right: 1px solid var(--line); }
+aside header { display: flex; justify-content: space-between; align-items: baseline; }
+ul { list-style: none; padding: 0; margin: 1rem 0 0; }
+li button { width: 100%; text-align: left; background: none; border: 0; border-left: 4px solid; padding: .55rem .75rem;
+  font: inherit; cursor: pointer; display: grid; gap: .1rem; }
+li button:hover:not(:disabled) { background: #fff8; }
+li button:disabled { cursor: default; opacity: .6; }
+li.trace button { border-color: var(--trace); } li.edit button { border-color: var(--edit); }
+small { font-family: system-ui, sans-serif; opacity: .7; }
+.note { font-family: system-ui, sans-serif; font-size: .9rem; }
+.map { height: 100%; width: 100%; }
+@media (max-width: 760px) { .layout { grid-template-columns: 1fr; grid-template-rows: 45vh 1fr; }
+  .map { order: -1; } aside { border-right: 0; } }
+
+/* Map / Table views */
+.stage { display: flex; flex-direction: column; min-width: 0; height: 100vh; }
+.stage .map { flex: 1; min-height: 0; height: auto; }
+.tabs { display: flex; gap: .25rem; padding: .5rem 1rem 0; border-bottom: 1px solid var(--line); }
+.tabs button { font: inherit; background: none; border: 0; padding: .6rem 1rem; cursor: pointer; border-bottom: 3px solid transparent; }
+.tabs button[aria-selected="true"] { border-color: var(--ink); font-weight: 700; }
+.table-view { padding: 1rem; overflow: auto; flex: 1; }
+.filters { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; margin-bottom: .75rem; }
+.filters input, .filters select { font: inherit; padding: .45rem .6rem; border: 1px solid var(--line); border-radius: 4px; background: #fff; }
+.table-wrap { overflow-x: auto; background: #fff; border: 1px solid var(--line); border-radius: 4px; }
+table { width: 100%; border-collapse: collapse; font-family: system-ui, sans-serif; font-size: .92rem; }
+th, td { text-align: left; padding: .6rem .8rem; border-bottom: 1px solid var(--line); }
+th button { font: inherit; font-weight: 700; background: none; border: 0; cursor: pointer; padding: 0; }
+th[aria-sort="ascending"] button::after { content: " ▲"; } th[aria-sort="descending"] button::after { content: " ▼"; }
+.tag { padding: .15rem .5rem; border-radius: 99px; color: #fff; font-size: .8rem; }
+.tag.trace { background: var(--trace); } .tag.changeset { background: var(--edit); }
+.actions { display: flex; gap: 1rem; white-space: nowrap; }
+.actions a { color: var(--edit); }
+.link:disabled { color: inherit; opacity: .5; cursor: default; text-decoration: none; }
+.pager { display: flex; gap: 1rem; align-items: center; justify-content: center; margin-top: .75rem; }
+@media (max-width: 760px) { .stage { height: 80vh; } .layout { height: auto; } }
+
+/* Landing page */
+.landing { display: flex; flex-direction: column; height: 100vh; }
+.landing-header { padding: 2.5rem 1.5rem 1.5rem; text-align: center; }
+.landing-header h1 { margin: 0 0 .5rem; }
+.landing-header p { max-width: 34rem; margin: 0 auto .75rem; }
+.landing-open-table { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+
+/* Open Table */
+.open-table-view { display: flex; flex-direction: column; flex: 1; min-height: 0; }
+.open-table-map { height: 45%; min-height: 200px; width: 100%; }
+.open-table-list { flex: 1; overflow: auto; padding: 1rem; }
+.open-table-list h3 { margin: 0 0 .5rem; }
+.verify-link { color: var(--edit); font-weight: 600; text-decoration: none; }
+.verify-link:hover { text-decoration: underline; }
