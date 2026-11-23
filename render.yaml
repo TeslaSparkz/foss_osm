@@ -32,3 +32,5 @@ services:
         sync: false                # e.g. https://osm-sync.onrender.com
       - key: TOKEN_ENC_KEY
         sync: false                # run: openssl rand -base64 32  — paste the output here
+      - key: NODE_VERSION
+        value: "22"
